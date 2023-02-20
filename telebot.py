@@ -29,7 +29,7 @@ def convert(message: telebot.types.Message):
             raise ConvertionException('Слишком много параметров.')
 
         quote, base, amount = values
-        total_base = get_price.convert(quote, base, amount)
+        total_base = get_price.convert(quote, base, amount) * float(amount)
     except ConvertionException as e:
         bot.reply_to(message, f'Ошибка пользователя.\n{e}')
     except Exception as e:
